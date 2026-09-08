@@ -1,6 +1,6 @@
 spring:
   application:
-    name: voisetu-backend
+    name: words2voice-backend
   profiles:
     active: ${SPRING_PROFILES_ACTIVE:local}
   sql:
