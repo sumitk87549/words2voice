@@ -21,7 +21,8 @@ public class AudioStorageService {
         File audioFile = new File(userDir, generationId + ".wav");
         try (FileOutputStream fos = new FileOutputStream(audioFile)) {
             fos.write(audioBytes);
-        }
+        } 
+        
         return audioFile;
     }
 }

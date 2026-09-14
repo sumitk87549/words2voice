@@ -28,12 +28,12 @@ export const routes: Routes = [
   // Auth routes — guestGuard redirects authenticated users to /studio
   {
     path: 'login',
-    canActivate: [guestGuard],
+    // canActivate: [guestGuard],
     loadComponent: () => import('./features/auth/login/login.component').then(m => m.LoginComponent)
   },
   {
     path: 'signup',
-    canActivate: [guestGuard],
+    // canActivate: [guestGuard],
     loadComponent: () => import('./features/auth/signup/signup.component').then(m => m.SignupComponent)
   },
 

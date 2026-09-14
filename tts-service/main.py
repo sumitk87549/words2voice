@@ -162,63 +162,6 @@ async def voices():
     return VOICE_CATALOGUE
 
 
-# @app.post(
-#     "/synthesize",
-#     summary="Generate TTS audio",
-#     response_description="WAV audio bytes",
-#     responses={
-#         200: {"content": {"audio/wav": {}}, "description": "Generated WAV audio"},
-#         422: {"description": "Validation error"},
-#         503: {"description": "Engine not ready"},
-#     },
-# )
-# async def synthesize(req: SynthRequest):
-#     engine = get_engine()
-
-#     log.info(
-#         "Synthesising | voice=%s lang=%s speed=%.2f steps=%d chars=%d",
-#         req.voice_id, req.lang or "na", req.speed, req.total_steps, len(req.text),
-#     )
-
-#     t0 = time.time()
-#     try:
-#         voice_style = engine.get_voice_style(req.voice_id)
-#         # Use "na" for Hinglish / unknown — supertonic-3 handles it gracefully
-#         effective_lang = req.lang if req.lang else "na"
-
-#         wav, duration = engine.synthesize(
-#             text=req.text,
-#             voice_style=voice_style,
-#             lang=effective_lang,
-#             speed=req.speed,
-#             total_steps=req.total_steps,
-#             silence_duration=req.silence_duration,
-#         )
-#     except ValueError as exc:
-#         log.warning("Synthesis validation error: %s", exc)
-#         raise HTTPException(status_code=422, detail=str(exc))
-#     except Exception as exc:
-#         log.error("Synthesis failed: %s", exc, exc_info=True)
-#         raise HTTPException(status_code=500, detail=f"Synthesis failed: {exc}")
-
-#     elapsed = time.time() - t0
-#     log.info("✅ Generated %.2fs of audio in %.2fs (RTF %.3f)", float(np.sum(duration)), elapsed, elapsed / max(float(np.sum(duration)), 0.001))
-
-#     # Encode to WAV in-memory
-#     buf = io.BytesIO()
-#     sf.write(buf, wav.squeeze(), engine.sample_rate, format="WAV", subtype="PCM_16")
-#     buf.seek(0)
-
-#     return Response(
-#         content=buf.read(),
-#         media_type="audio/wav",
-#         headers={
-#             "X-Audio-Duration": str(round(float(np.sum(duration)), 3)),
-#             "X-Synthesis-Time": str(round(elapsed, 3)),
-#             "Content-Disposition": 'attachment; filename="words2voice_audio.wav"',
-#         },
-#     )
-
 @app.post(
     "/synthesize",
     summary="Generate TTS audio",
@@ -272,7 +215,7 @@ async def synthesize(req: SynthRequest):
     engine = get_engine()
 
     log.info(
-        "Synthesising | voice=%s lang=%s speed=%.2f steps=%d chars=%d",
+        "Synthesizing | voice=%s lang=%s speed=%.2f steps=%d chars=%d",
         req.voice_id,
         req.lang or "na",
         req.speed,

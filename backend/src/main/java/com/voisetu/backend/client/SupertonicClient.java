@@ -1,8 +1,14 @@
 package com.voisetu.backend.client;
 
-import com.voisetu.backend.exception.TtsEngineTimeoutException;
-import com.voisetu.backend.exception.TtsEngineUnavailableException;
-import jakarta.annotation.PostConstruct;
+import java.net.ConnectException;
+import java.net.URI;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
+import java.net.http.HttpTimeoutException;
+import java.nio.charset.StandardCharsets;
+import java.time.Duration;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
@@ -12,14 +18,10 @@ import org.springframework.retry.annotation.Retryable;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestClient;
 
-import java.net.ConnectException;
-import java.net.URI;
-import java.net.http.HttpClient;
-import java.net.http.HttpRequest;
-import java.net.http.HttpResponse;
-import java.net.http.HttpTimeoutException;
-import java.nio.charset.StandardCharsets;
-import java.time.Duration;
+import com.voisetu.backend.exception.TtsEngineTimeoutException;
+import com.voisetu.backend.exception.TtsEngineUnavailableException;
+
+import jakarta.annotation.PostConstruct;
 
 /**
  * HTTP client for the Voisetu FastAPI TTS service (supertonic-3) on port 8000.
@@ -71,7 +73,7 @@ public class SupertonicClient {
      */
     @Retryable(
         retryFor = { TtsEngineUnavailableException.class },
-        maxAttempts = 2,
+        maxAttempts = 5,
         backoff = @Backoff(delay = 1500, multiplier = 1.5)
     )
     public byte[] synthesize(String text, String voiceId, String lang, double speed, int totalSteps) {

@@ -37,7 +37,7 @@ export class LandingComponent implements OnInit {
 
   voices: any[] = this.DEFAULT_VOICES;
   selectedVoiceId = 'M1';
-  textToSynthesize = 'कम बोलो, ज़्यादा करो — let your results speak for you.';
+  textToSynthesize = 'कम बोलो, ज़्यादा करो !\nLet your results speak for you!';
   isLoading = false;
   audioUrl: string | null = null;
   errorMessage: string | null = null;
