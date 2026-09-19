@@ -224,8 +224,8 @@
         <profile>
             <id>prod</id>
             <properties>
-                <base.url>https://https://words2voice.vercel.app/</base.url>
-                <api.base.url>https://https://words2voice.vercel.app/</api.base.url>
+                <base.url>https://words2voice.vercel.app/</base.url>
+                <api.base.url>https://words2voice.vercel.app/</api.base.url>
                 <browser>chrome</browser>
                 <headless>true</headless>
             </properties>

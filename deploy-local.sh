@@ -138,7 +138,7 @@ echo "▶  Creating Spring Boot systemd service..."
 sudo tee /etc/systemd/system/words2voice-backend.service > /dev/null << SVCEOF
 [Unit]
 Description=words2voice Spring Boot Backend
-Documentation=https://https://words2voice.vercel.app/
+Documentation=https://words2voice.vercel.app/
 After=network-online.target
 Wants=network-online.target
 
@@ -158,7 +158,7 @@ SyslogIdentifier=words2voice-backend
 
 # Environment — local profile, CORS allows https://words2voice.vercel.app/
 Environment="SPRING_PROFILES_ACTIVE=local"
-Environment="ALLOWED_ORIGINS=https://https://words2voice.vercel.app/,http://localhost:4200"
+Environment="ALLOWED_ORIGINS=https://words2voice.vercel.app/,http://localhost:4200"
 Environment="JWT_SECRET=${JWT_SECRET}"
 Environment="JAVA_OPTS=-Xmx512m"
 

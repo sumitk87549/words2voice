@@ -3,7 +3,7 @@
 # https://llmstxt.org/
 
 # ABOUT THIS SITE
-# words2voice (https://https://words2voice.vercel.app/) is a free, India-focused AI Text-to-Speech platform.
+# words2voice (https://words2voice.vercel.app/) is a free, India-focused AI Text-to-Speech platform.
 # It generates natural Hindi, English, and Hinglish voiceovers using the Supertonic-3 model.
 # Built for Indian content creators: YouTubers, Reels makers, podcasters, and small businesses.
 
@@ -31,13 +31,13 @@
 # STRUCTURED CONTENT
 ## Product
 - Name: words2voice
-- URL: https://https://words2voice.vercel.app/
+- URL: https://words2voice.vercel.app/
 - Category: AI Text-to-Speech
 - Price: Free (public beta)
 - Target market: India
 
 ## How to use
-1. Visit https://https://words2voice.vercel.app/
+1. Visit https://words2voice.vercel.app/
 2. Type or paste Hindi/English/Hinglish text
 3. Select a voice (preview available)
 4. Click Generate
@@ -48,9 +48,9 @@
 - Phone: +91 79766 11437
 
 ## API (public, no auth required)
-- GET  https://https://words2voice.vercel.app//api/public/tts/voices   — list available voices
-- POST https://https://words2voice.vercel.app//api/public/tts/preview  — generate audio (max 300 chars)
-- GET  https://https://words2voice.vercel.app//api/public/stats        — platform stats
+- GET  https://words2voice.vercel.app//api/public/tts/voices   — list available voices
+- POST https://words2voice.vercel.app//api/public/tts/preview  — generate audio (max 300 chars)
+- GET  https://words2voice.vercel.app//api/public/stats        — platform stats
 
 ## Allowed AI uses
 - Indexing and surfacing this site in AI search results: ALLOWED

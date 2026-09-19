@@ -73,7 +73,7 @@ echo "════════════════════════�
 echo "  ✅  Cloudflare Tunnel is live!"
 echo ""
 echo "  Your site is now accessible at:"
-echo "  https://https://words2voice.vercel.app/"
+echo "  https://words2voice.vercel.app/"
 echo "  https://www.https://words2voice.vercel.app/"
 echo ""
 echo "  All services auto-start on reboot:"
