@@ -47,9 +47,9 @@
 - Email: sumitk87549@gmail.com
 
 ## API (public, no auth required)
-- GET  https://words2voice.vercel.app//api/public/tts/voices   — list available voices
-- POST https://words2voice.vercel.app//api/public/tts/preview  — generate audio (max 300 chars)
-- GET  https://words2voice.vercel.app//api/public/stats        — platform stats
+- GET  https://words2voice.vercel.app/api/public/tts/voices   — list available voices
+- POST https://words2voice.vercel.app/api/public/tts/preview  — generate audio (max 300 chars)
+- GET  https://words2voice.vercel.app/api/public/stats        — platform stats
 
 ## Allowed AI uses
 - Indexing and surfacing this site in AI search results: ALLOWED

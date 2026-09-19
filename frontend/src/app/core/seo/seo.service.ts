@@ -60,7 +60,7 @@ export class SeoService {
 
   private updatePage(path: string): void {
     const page = pages[path] ?? pages['/'];
-    const canonical = `${siteUrl}${page.path === '/' ? '/' : page.path}`;
+    const canonical = `${siteUrl}${page.path === '/' ? '' : page.path}`;
 
     this.title.setTitle(page.title);
     this.meta.updateTag({ name: 'description', content: page.description });

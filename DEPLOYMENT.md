@@ -453,7 +453,7 @@ Your `index.html` already contains:
 - Canonical URL set to `https://words2voice.vercel.app/`
 
 **Manual steps after going live:**
-1. Submit sitemap to Google Search Console: `https://words2voice.vercel.app//sitemap.xml`
+1. Submit sitemap to Google Search Console: `https://words2voice.vercel.app/sitemap.xml`
 2. Submit to Bing Webmaster Tools
 3. Verify domain ownership via Cloudflare DNS TXT record
 
