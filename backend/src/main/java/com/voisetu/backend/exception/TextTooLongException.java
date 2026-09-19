@@ -7,6 +7,6 @@ public class TextTooLongException extends AppException {
 
     public TextTooLongException(int maxChars) {
         super(HttpStatus.PAYLOAD_TOO_LARGE, "TEXT_TOO_LONG",
-                "Text exceeds the maximum allowed length of " + maxChars + " characters per request...");
+                "Text exceeds the maximum allowed length of " + maxChars + " characters per request.");
     }
 }
