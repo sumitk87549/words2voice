@@ -34,8 +34,7 @@ User-agent: facebookexternalhit
 Allow: /
 
 # AI discovery files
-# llms.txt: https://words2voice.in/llms.txt
+# llms.txt: https://words2voice.vercel.app/llms.txt
 # ──────────────────────────────────────────────────────────────────────────────
 
-Sitemap: https://words2voice.in/sitemap.xml
-
+Sitemap: https://words2voice.vercel.app/sitemap.xml
