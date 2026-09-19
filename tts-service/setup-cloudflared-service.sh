@@ -38,13 +38,13 @@ credentials-file: ${CREDENTIALS_FILE}
 
 # Point tunnel at local nginx (which serves frontend + proxies API)
 ingress:
-  - hostname: words2voice.in
+  - hostname: https://words2voice.vercel.app/
     service: http://localhost:80
     originRequest:
       connectTimeout: 30s
       proxyReadTimeout: 240s
       noTLSVerify: false
-  - hostname: www.words2voice.in
+  - hostname: www.https://words2voice.vercel.app/
     service: http://localhost:80
     originRequest:
       connectTimeout: 30s
@@ -73,8 +73,8 @@ echo "════════════════════════�
 echo "  ✅  Cloudflare Tunnel is live!"
 echo ""
 echo "  Your site is now accessible at:"
-echo "  https://words2voice.in"
-echo "  https://www.words2voice.in"
+echo "  https://https://words2voice.vercel.app/"
+echo "  https://www.https://words2voice.vercel.app/"
 echo ""
 echo "  All services auto-start on reboot:"
 echo "    nginx            — systemd (serves frontend + proxies API)"

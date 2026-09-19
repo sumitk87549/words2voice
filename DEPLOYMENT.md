@@ -49,7 +49,7 @@ Render.com (Singapore) ─── Spring Boot API ─── ~80-100ms from India
      ├──► Neon PostgreSQL (Singapore) ─── ~10ms from Render
      │
      └──► Your Laptop ─── FastAPI + Supertonic-3 (Docker container, port 8000)
-               ↕ Cloudflare Tunnel (tts.words2voice.in, named, stable URL)
+               ↕ Cloudflare Tunnel (tts.https://words2voice.vercel.app/, named, stable URL)
                Latency depends on your ISP upload speed + Cloudflare routing
 ```
 
@@ -73,7 +73,7 @@ Render.com (Singapore) ─── Spring Boot API ─── ~80-100ms from India
 
 Before starting, make sure:
 - [ ] Your code is on **GitHub** (push the repo if not already)
-- [ ] You have a domain (optional) — `words2voice.in` based on your index.html
+- [ ] You have a domain (optional) — `https://words2voice.vercel.app/` based on your index.html
 - [x] Neon DB — you've already done this part ✅
 
 ---
@@ -346,7 +346,7 @@ In Render service → **Environment** tab, add:
 | `DB_PASSWORD` | your Neon password |
 | `JWT_SECRET` | (paste the openssl output from 3.2) |
 | `TTS_ENGINE_URL` | `http://YOUR_ORACLE_VM_PUBLIC_IP:8000` (or the temporary tunnel URL from Step 2.5) |
-| `ALLOWED_ORIGINS` | `https://words2voice.pages.dev,https://words2voice.in` |
+| `ALLOWED_ORIGINS` | `https://words2voice.pages.dev,https://https://words2voice.vercel.app/` |
 
 4. Click **Deploy** — watch logs, wait for `Started BackendApplication`
 
@@ -377,9 +377,9 @@ Then commit and push — Cloudflare Pages auto-rebuilds.
 4. Click **Save and Deploy**
 
 ### 4.3 Custom Domain (Optional)
-If you own `words2voice.in`:
-1. Cloudflare → **Add a Site** → enter `words2voice.in` → follow nameserver instructions
-2. Pages → **Custom Domains** → Add `words2voice.in`
+If you own `https://words2voice.vercel.app/`:
+1. Cloudflare → **Add a Site** → enter `https://words2voice.vercel.app/` → follow nameserver instructions
+2. Pages → **Custom Domains** → Add `https://words2voice.vercel.app/`
 
 ---
 
@@ -437,7 +437,7 @@ DB_USERNAME=<neon-user>
 DB_PASSWORD=<neon-password>
 JWT_SECRET=<64-char-random-string>
 TTS_ENGINE_URL=http://<oracle-vm-ip>:8000
-ALLOWED_ORIGINS=https://words2voice.pages.dev,https://words2voice.in
+ALLOWED_ORIGINS=https://words2voice.pages.dev,https://https://words2voice.vercel.app/
 ```
 
 ---
@@ -450,10 +450,10 @@ Your `index.html` already contains:
 - India geo tags + hreflang for Hindi/English
 - `robots.txt` with sitemap reference
 - `sitemap.xml` with all public routes
-- Canonical URL set to `https://words2voice.in`
+- Canonical URL set to `https://https://words2voice.vercel.app/`
 
 **Manual steps after going live:**
-1. Submit sitemap to Google Search Console: `https://words2voice.in/sitemap.xml`
+1. Submit sitemap to Google Search Console: `https://https://words2voice.vercel.app//sitemap.xml`
 2. Submit to Bing Webmaster Tools
 3. Verify domain ownership via Cloudflare DNS TXT record
 

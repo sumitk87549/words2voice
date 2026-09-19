@@ -48,7 +48,7 @@ app:
 #   DB_PASSWORD     = your-neon-password
 #   JWT_SECRET      = a-long-random-secret-string-min-32-chars
 #   TTS_ENGINE_URL  = http://YOUR_ORACLE_VM_IP:8000
-#   ALLOWED_ORIGINS = https://words2voice.pages.dev,https://words2voice.in
+#   ALLOWED_ORIGINS = https://words2voice.pages.dev,https://https://words2voice.vercel.app/
 ---
 spring:
   config:

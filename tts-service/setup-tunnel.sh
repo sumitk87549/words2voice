@@ -11,7 +11,7 @@
 set -euo pipefail
 
 TUNNEL_NAME="words2voice-tts"
-TTS_HOSTNAME="tts.words2voice.in"
+TTS_HOSTNAME="tts.https://words2voice.vercel.app/"
 TTS_LOCAL_URL="http://localhost:8000"
 CLOUDFLARED_DIR="$HOME/.cloudflared"
 
@@ -35,7 +35,7 @@ fi
 echo ""
 echo "▶  Logging into Cloudflare..."
 echo "   A browser window will open. Authorise the tunnel for your"
-echo "   'words2voice.in' zone. The cert.pem will be saved to ~/.cloudflared/"
+echo "   'https://words2voice.vercel.app/' zone. The cert.pem will be saved to ~/.cloudflared/"
 echo ""
 cloudflared tunnel login
 

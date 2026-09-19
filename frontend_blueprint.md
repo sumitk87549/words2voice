@@ -14,7 +14,7 @@
 
 **Dev Server**: `ng serve` → `http://localhost:4200`  
 **Production Build**: `ng build` → optimised bundle served by nginx  
-**Product Domain**: `https://words2voice.in`
+**Product Domain**: `https://https://words2voice.vercel.app/`
 
 ---
 

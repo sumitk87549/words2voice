@@ -138,7 +138,7 @@ echo "▶  Creating Spring Boot systemd service..."
 sudo tee /etc/systemd/system/words2voice-backend.service > /dev/null << SVCEOF
 [Unit]
 Description=words2voice Spring Boot Backend
-Documentation=https://words2voice.in
+Documentation=https://https://words2voice.vercel.app/
 After=network-online.target
 Wants=network-online.target
 
@@ -156,9 +156,9 @@ StandardOutput=journal
 StandardError=journal
 SyslogIdentifier=words2voice-backend
 
-# Environment — local profile, CORS allows words2voice.in
+# Environment — local profile, CORS allows https://words2voice.vercel.app/
 Environment="SPRING_PROFILES_ACTIVE=local"
-Environment="ALLOWED_ORIGINS=https://words2voice.in,http://localhost:4200"
+Environment="ALLOWED_ORIGINS=https://https://words2voice.vercel.app/,http://localhost:4200"
 Environment="JWT_SECRET=${JWT_SECRET}"
 Environment="JAVA_OPTS=-Xmx512m"
 
@@ -202,8 +202,8 @@ echo "  Run these commands in a new terminal:"
 echo ""
 echo "  cloudflared tunnel login"
 echo "  cloudflared tunnel create words2voice"
-echo "  cloudflared tunnel route dns words2voice words2voice.in"
-echo "  cloudflared tunnel route dns words2voice www.words2voice.in"
+echo "  cloudflared tunnel route dns words2voice https://words2voice.vercel.app/"
+echo "  cloudflared tunnel route dns words2voice www.https://words2voice.vercel.app/"
 echo ""
 echo "  Then run: bash ${REPO_ROOT}/tts-service/setup-cloudflared-service.sh"
 echo "═══════════════════════════════════════════════════════════"

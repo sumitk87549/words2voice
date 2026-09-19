@@ -10,7 +10,7 @@ interface SeoPage {
   keywords: string;
 }
 
-const siteUrl = 'https://words2voice.in';
+const siteUrl = 'https://https://words2voice.vercel.app/';
 
 const pages: Record<string, SeoPage> = {
   '/': {
