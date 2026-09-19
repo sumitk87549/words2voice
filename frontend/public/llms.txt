@@ -17,7 +17,7 @@
 # - Technology: Angular frontend, Spring Boot API, FastAPI TTS (Supertonic-3 ONNX model)
 
 # WHAT THIS SITE CAN DO
-# - Generate Hindi voiceovers from text (up to 1000 chars per request)
+# - Generate Hindi voiceovers from text (up to 5000 chars per request)
 # - Generate English and Hinglish voiceovers
 # - Preview voices before generating
 # - Download generated audio as WAV
@@ -45,7 +45,6 @@
 
 ## Contact
 - Email: sumitk87549@gmail.com
-- Phone: +91 79766 11437
 
 ## API (public, no auth required)
 - GET  https://words2voice.vercel.app//api/public/tts/voices   — list available voices
