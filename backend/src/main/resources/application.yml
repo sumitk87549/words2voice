@@ -94,8 +94,8 @@ management:
         include: health,info,metrics
   endpoint:
     health:
-      show-details: when_authorized
-      show-components: when_authorized
+      show-details: always
+      show-components: always
   health:
     defaults:
       enabled: true
