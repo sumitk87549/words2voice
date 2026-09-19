@@ -85,7 +85,7 @@ public class SupertonicClient {
                     .uri(URI.create(baseUrl + "/synthesize"))
                     .header("Content-Type", "application/json")
                     .header("Accept", "audio/wav, */*")
-                    .timeout(Duration.ofSeconds(120))
+                    .timeout(Duration.ofSeconds(1200))
                     .POST(HttpRequest.BodyPublishers.ofString(json, StandardCharsets.UTF_8))
                     .build();
 

@@ -6,6 +6,8 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 import { ThemeService } from '../core/theme/theme.service';
 import { AnalyticsService } from '../core/analytics/analytics.service';
+import { AuthService } from '../core/auth/auth';
+import { computed } from '@angular/core'
 
 @Component({
   selector: 'app-landing',
@@ -21,6 +23,9 @@ export class LandingComponent implements OnInit {
   private ngZone = inject(NgZone);
   private cdr = inject(ChangeDetectorRef);
   private analytics = inject(AnalyticsService);
+  private authService = inject(AuthService);
+  // const isLoggedIn = this.authService.isAuthenticated();
+  readonly isLoggedIn = computed(() => this.authService.isAuthenticated());
 
   DEFAULT_VOICES = [
     { engineVoiceId: 'M1', displayName: 'Rohan', gender: 'male', styleTag: 'Calm' },

@@ -38,8 +38,8 @@ public class AppProperties {
     @Getter
     @Setter
     public static class Usage {
-        private int dailyLimit = 5000;
-        private int maxRequestChars = 1000;
+        private int dailyLimit = 20000;
+        private int maxRequestChars = 5000;
     }
 
     @Getter

@@ -260,7 +260,7 @@ interface GenerateAudioRequest { text, voiceId, engineVoiceId, lang, speed, tota
 **The single source of truth for the entire Studio module.** All child components (ScriptEditor, VoicePicker, VoiceSettings, AudioResult) read from and write to this service.
 
 **Constants**:
-- `maxChars = 15000`
+- `maxChars = 5000`
 - `langOptions`: Auto (Hinglish) / Hindi / English
 - `speedPresets`: 0.75× to 1.5×
 - `qualityPresets`: Draft(4) / Standard(8) / High(16) / Ultra(32)

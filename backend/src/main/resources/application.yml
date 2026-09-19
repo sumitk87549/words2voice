@@ -35,8 +35,8 @@ app:
   storage:
     audio-dir: backend-data/audio
   usage:
-    daily-limit: 5000
-    max-request-chars: 1000
+    daily-limit: 50000
+    max-request-chars: 5000
   tts:
     semaphore-permits: 3
 
@@ -80,8 +80,8 @@ app:
   storage:
     audio-dir: /tmp/w2v-audio
   usage:
-    daily-limit: 5000
-    max-request-chars: 1000
+    daily-limit: 20000
+    max-request-chars: 5000
   tts:
     semaphore-permits: 3
 

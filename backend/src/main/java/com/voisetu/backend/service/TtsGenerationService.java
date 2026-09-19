@@ -84,10 +84,10 @@ public class TtsGenerationService {
             throw new DailyLimitExceededException(dailyLimit);
         }
 
-        // Acquire semaphore — fail fast if TTS studio is full (wait up to 3 seconds)
+        // Acquire semaphore — fail fast if TTS studio is full (wait up to 20 seconds)
         boolean acquired;
         try {
-            acquired = ttsSemaphore.tryAcquire(3, TimeUnit.SECONDS);
+            acquired = ttsSemaphore.tryAcquire(20, TimeUnit.SECONDS);
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();
             throw TtsEngineUnavailableException.busy();

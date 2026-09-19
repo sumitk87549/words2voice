@@ -30,7 +30,7 @@ export class StudioStateService {
   private errorDisplay = inject(ErrorDisplayService);
 
   // ── Constants ────────────────────────────────────────────────────────
-  readonly maxChars = 15000;
+  readonly maxChars = 5000;
 
   readonly langOptions: { value: StudioLanguage; label: string }[] = [
     { value: 'na', label: '🌐 Auto (Hinglish)' },

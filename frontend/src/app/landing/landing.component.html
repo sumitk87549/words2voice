@@ -17,10 +17,14 @@
           [attr.aria-label]="themeService.isDark ? 'Switch to day mode' : 'Switch to night mode'">
           {{ themeService.isDark ? '☀️' : '🌙' }}
         </button>
-        <a routerLink="/login" class="nav-btn btn-ghost" id="nav-login-btn">Log In</a>
-        <a routerLink="/signup" class="nav-btn btn-register" id="nav-register-btn">Register</a>
-        <a routerLink="/studio" class="nav-btn btn-accent" id="nav-studio-btn">Studio</a>
-      </div>
+        <div *ngIf="!isLoggedIn">
+          <a routerLink="/login" class="nav-btn btn-ghost" id="nav-login-btn">Log In</a>
+          <a routerLink="/signup" class="nav-btn btn-register" id="nav-register-btn">Register</a>
+        </div>
+        <div *ngIf="isLoggedIn">
+          <a routerLink="/studio" class="nav-btn btn-accent" id="nav-studio-btn">Studio</a>
+        </div>
+        </div>
       <button class="mobile-menu-btn" (click)="mobileMenuOpen = !mobileMenuOpen" aria-label="Toggle menu">
         <span class="bar"></span><span class="bar"></span><span class="bar"></span>
       </button>
@@ -31,9 +35,13 @@
       <a href="#languages" (click)="mobileMenuOpen = false">Languages</a>
       <a href="#faq" (click)="mobileMenuOpen = false">FAQ</a>
       <a routerLink="/contact" (click)="mobileMenuOpen = false">Contact</a>
-      <a routerLink="/login" (click)="mobileMenuOpen = false">Log In</a>
-      <a routerLink="/signup" (click)="mobileMenuOpen = false" class="mobile-register-link">Register</a>
-      <a routerLink="/studio" class="btn-accent-mobile" (click)="mobileMenuOpen = false">Studio</a>
+      <div *ngIf="!isLoggedIn">
+        <a routerLink="/login" (click)="mobileMenuOpen = false">Log In</a>
+        <a routerLink="/signup" (click)="mobileMenuOpen = false" class="mobile-register-link">Register</a>
+      </div>
+      <div *ngIf="isLoggedIn">
+        <a routerLink="/studio" class="btn-accent-mobile" (click)="mobileMenuOpen = false">Studio</a>
+      </div>
       <button class="theme-toggle-mobile" (click)="themeService.toggle()">
         {{ themeService.isDark ? '☀️ Day Mode' : '🌙 Night Mode' }}
       </button>

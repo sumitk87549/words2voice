@@ -111,7 +111,7 @@ export class ScriptEditorComponent implements OnInit, OnDestroy {
   readonly state = inject(StudioStateService);
 
   readonly placeholderExamples = [
-    'Type your Hindi / English / Hinglish script here…\n\nFor example: Yaar, aaj का दिन bahut amazing था!',
+    'Type your Hindi / English / Hinglish script here…\n\nFor example: यार, आज का दिन बहुत amazing रहा! चाय पीनी है?',
     'एक समय की बात है, एक छोटे से गाँव में…\n\n(Hindi, English, and Hinglish all work here!)',
     'Good morning! Aaj hum baat karenge ek important topic ke baare mein…',
     'नमस्ते! आपका हमारे channel पर swagat hai। आज ka video bahut special hai…',

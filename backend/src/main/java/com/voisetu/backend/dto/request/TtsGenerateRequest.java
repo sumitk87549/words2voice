@@ -12,7 +12,7 @@ import jakarta.validation.constraints.*;
 public record TtsGenerateRequest(
 
         @NotBlank(message = "Text is required and cannot be empty")
-        @Size(max = 1000, message = "Text must not exceed 1000 characters per request")
+        @Size(max = 5000, message = "Text must not exceed 5000 characters per request")
         String text,
 
         @JsonAlias({"engineVoiceId", "engine_voice_id", "voice_id"})

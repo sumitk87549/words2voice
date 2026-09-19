@@ -101,7 +101,7 @@ async def startup_event():
 # ── Request/Response models ───────────────────────────────────────────────────
 
 class SynthRequest(BaseModel):
-    text: str = Field(..., min_length=1, max_length=2000, description="Text to synthesise (Hindi/English/Hinglish)")
+    text: str = Field(..., min_length=1, max_length=5000, description="Text to synthesise (Hindi/English/Hinglish)")
     voice_id: str = Field("M1", description="Voice preset ID (M1–M5, F1–F5)")
     lang: Optional[str] = Field(
         None,

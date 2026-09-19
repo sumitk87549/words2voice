@@ -32,11 +32,6 @@ public class RateLimitService {
 
     /**
      * Checks if the client IP is within its allowed request quota.
-     *
-     * @param clientIp  Remote IP address
-     * @param maxPerHour Maximum requests allowed per hour window
-     * @param context   Endpoint name for logging
-     * @return {@code true} if the request is allowed, {@code false} if rate-limited
      */
     public boolean isAllowed(String clientIp, int maxPerHour, String context) {
         // Evict expired windows

@@ -4,8 +4,8 @@ import { Pipe, PipeTransform } from '@angular/core';
  * Pure Pipe: charCount
  * Formats character count as "used / max chars" with locale-aware number formatting.
  * Examples:
- *   (1234, 15000) → "1,234 / 15,000 chars"
- *   (0, 15000)    → "0 / 15,000 chars"
+ *   (1234, 5000) → "1,234 / 15,000 chars"
+ *   (0, 5000)    → "0 / 15,000 chars"
  *
  * Usage: {{ text.length | charCount:maxChars }}
  * Or just count: {{ text.length | charCount }}
