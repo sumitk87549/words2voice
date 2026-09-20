@@ -20,7 +20,7 @@
     </p>
 
     <div class="contact-grid">
-      <div class="form-card" *ngIf="!submitted">
+      <div class="form-card">
         <div class="error-msg" *ngIf="error">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <circle cx="12" cy="12" r="10" />
@@ -32,28 +32,22 @@
         <form (ngSubmit)="onSubmit()">
           <div class="form-group">
             <label for="contact-name">Your Name</label>
-            <input type="text" id="contact-name" [(ngModel)]="name" name="name" required placeholder="Priya" />
+            <input type="text" id="contact-name" [(ngModel)]="name" (ngModelChange)="onFieldChange()" name="name" required placeholder="Priya" />
           </div>
           <div class="form-group">
             <label for="contact-email">Email Address</label>
-            <input type="email" id="contact-email" [(ngModel)]="email" name="email" required
+            <input type="email" id="contact-email" [(ngModel)]="email" (ngModelChange)="onFieldChange()" name="email" required
               placeholder="priya@example.com" />
           </div>
           <div class="form-group">
             <label for="contact-message">Message</label>
-            <textarea id="contact-message" [(ngModel)]="message" name="message" required rows="5"
+            <textarea id="contact-message" [(ngModel)]="message" (ngModelChange)="onFieldChange()" name="message" required rows="5"
               placeholder="What's on your mind?"></textarea>
           </div>
-          <button type="submit" class="btn-send" [disabled]="loading || !name || !email || !message">
-            {{ loading ? 'Sending...' : 'Send Message' }}
+          <button type="submit" class="btn-send" [disabled]="isButtonDisabled">
+            {{ buttonText }}
           </button>
         </form>
-      </div>
-
-      <div class="success-card" *ngIf="submitted">
-        <div class="icon">✉️</div>
-        <h3>Message sent!</h3>
-        <p>Thanks for writing in. I'll get back to you when I can.</p>
       </div>
 
       <div class="contact-info">

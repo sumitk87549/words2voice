@@ -25,7 +25,36 @@ export class ContactComponent {
   message = '';
   loading = false;
   error = '';
-  submitted = false;
+  hasSubmitted = false;
+  originalName = '';
+  originalEmail = '';
+  originalMessage = '';
+
+  onFieldChange() {
+    if (this.hasSubmitted && this.isFormDirty) {
+      this.hasSubmitted = false;
+    }
+  }
+
+  get isFormDirty(): boolean {
+    return this.name !== this.originalName ||
+           this.email !== this.originalEmail ||
+           this.message !== this.originalMessage;
+  }
+
+  get isButtonDisabled(): boolean {
+    return this.loading ||
+           !this.name ||
+           !this.email ||
+           !this.message ||
+           (this.hasSubmitted && !this.isFormDirty);
+  }
+
+  get buttonText(): string {
+    if (this.loading) return 'Sending...';
+    if (this.hasSubmitted && !this.isFormDirty) return 'Sent';
+    return 'Send Message';
+  }
 
   onSubmit() {
     this.loading = true;
@@ -35,7 +64,10 @@ export class ContactComponent {
     }).subscribe({
       next: () => {
         this.toast.success('Message sent successfully! Thanks for reaching out.');
-        this.submitted = true;
+        this.hasSubmitted = true;
+        this.originalName = this.name;
+        this.originalEmail = this.email;
+        this.originalMessage = this.message;
         this.loading = false;
       },
       error: (err) => {
