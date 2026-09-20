@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
-import { ToastService } from '../../core/toast/toast.service';
+import { ToastService } from '../core/toast/toast.service';
 
 @Component({
   selector: 'app-contact',
