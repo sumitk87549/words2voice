@@ -33,7 +33,7 @@ log = logging.getLogger("voisetu.tts")
 
 # ── App ───────────────────────────────────────────────────────────────────────
 app = FastAPI(
-    title="Voisetu TTS Service",
+    title="Words2Voice TTS Service",
     description="On-device TTS powered by Supertonic-3 (Supertone/supertonic-3)",
     version="1.0.0",
 )

@@ -36,12 +36,11 @@ import { SpokenDurationPipe } from '@shared/pipes/spoken-duration.pipe';
           Script Editor
         </span>
         <div class="editor-actions">
-          @if (!state.text()) {
             <button class="editor-action-btn" (click)="pasteFromClipboard()"
               [appTooltip]="'Paste text from clipboard'" tooltipPosition="top">
               📋 Paste
             </button>
-          }
+
           @if (state.text()) {
             <button class="editor-action-btn" (click)="state.clearText()"
               [appTooltip]="'Clear all text'" tooltipPosition="top">
@@ -53,6 +52,7 @@ import { SpokenDurationPipe } from '@shared/pipes/spoken-duration.pipe';
 
       <!-- Textarea with appAutoResize directive -->
       <textarea
+        #ttsTextInput
         id="tts-text-input"
         appAutoResize
         [value]="state.text()"
@@ -110,6 +110,9 @@ import { SpokenDurationPipe } from '@shared/pipes/spoken-duration.pipe';
 export class ScriptEditorComponent implements OnInit, OnDestroy {
   readonly state = inject(StudioStateService);
 
+  @ViewChild('ttsTextInput', { static: true })
+  textAreaRef!: ElementRef<HTMLTextAreaElement>;
+
   readonly placeholderExamples = [
     'Type your Hindi / English / Hinglish script here…\n\nFor example: यार, आज का दिन बहुत amazing रहा! चाय पीनी है?',
     'एक समय की बात है, एक छोटे से गाँव में…\n\n(Hindi, English, and Hinglish all work here!)',
@@ -142,9 +145,31 @@ export class ScriptEditorComponent implements OnInit, OnDestroy {
   async pasteFromClipboard(): Promise<void> {
     try {
       const clipText = await navigator.clipboard.readText();
-      if (clipText) {
-        this.state.setText(clipText.substring(0, this.state.maxChars));
+      if (!clipText) return;
+
+      const textarea = this.textAreaRef.nativeElement;
+      const currentText = this.state.text();
+      const startPos = textarea.selectionStart;
+      const endPos = textarea.selectionEnd;
+
+      // Insert clipboard text at cursor position or replace selection
+      const textBefore = currentText.substring(0, startPos);
+      const textAfter = currentText.substring(endPos);
+      let newText = textBefore + clipText + textAfter;
+
+      // Respect maxChars limit
+      if (newText.length > this.state.maxChars) {
+        newText = newText.substring(0, this.state.maxChars);
       }
+
+      this.state.setText(newText);
+
+      // Set cursor position after inserted text
+      const newCursorPos = startPos + clipText.length;
+      setTimeout(() => {
+        textarea.focus();
+        textarea.setSelectionRange(newCursorPos, newCursorPos);
+      });
     } catch {
       // Clipboard permission denied — ignore silently
     }
