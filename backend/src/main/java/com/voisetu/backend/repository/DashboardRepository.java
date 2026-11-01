@@ -24,7 +24,7 @@ public class DashboardRepository {
     // --- Projects ---
     public List<Map<String, Object>> getProjects(Long userId) {
         return jdbcTemplate.queryForList(
-                "SELECT id, name, created_at FROM project WHERE user_id = ? ORDER BY created_at DESC", 
+                "SELECT id, name, created_at FROM project WHERE user_id = ? ORDER BY created_at DESC",
                 userId
         );
     }
@@ -33,7 +33,7 @@ public class DashboardRepository {
         KeyHolder keyHolder = new GeneratedKeyHolder();
         jdbcTemplate.update(connection -> {
             PreparedStatement ps = connection.prepareStatement(
-                    "INSERT INTO project (user_id, name) VALUES (?, ?)", 
+                    "INSERT INTO project (user_id, name) VALUES (?, ?)",
                     new String[]{"id"}
             );
             ps.setLong(1, userId);
@@ -45,7 +45,7 @@ public class DashboardRepository {
 
     public void updateProject(Long userId, Long projectId, String name) {
         jdbcTemplate.update(
-                "UPDATE project SET name = ? WHERE id = ? AND user_id = ?", 
+                "UPDATE project SET name = ? WHERE id = ? AND user_id = ?",
                 name, projectId, userId
         );
     }
@@ -55,7 +55,7 @@ public class DashboardRepository {
     }
 
     // --- Usage Daily ---
-    public Map<String, Object> getUsageToday(Long userId) {
+    public Map<String, Object>      getUsageToday(Long userId) {
         List<Map<String, Object>> res = jdbcTemplate.queryForList(
                 "SELECT characters_used, generation_count FROM usage_daily WHERE user_id = ? AND usage_date = ?", 
                 userId, Date.valueOf(LocalDate.now())

@@ -20,18 +20,7 @@ import java.util.concurrent.Semaphore;
 import java.util.concurrent.TimeUnit;
 
 /**
- * Core TTS generation service.
- *
- * Concurrency model:
- *   - A bounded {@link Semaphore} limits simultaneous TTS calls to {@code app.tts.semaphore-permits}.
- *   - Requests that cannot acquire a permit within a short timeout get an immediate 503
- *     rather than piling up and blocking server threads.
- *   - The DB operations (create, update, usage upsert) are wrapped in a transaction.
- *     If TTS fails, the generation row is updated to 'failed'; no orphans are left.
- *
- * N+1 prevention:
- *   - Voice DB ID is resolved once per request via a single indexed query on {@code engine_voice_id}.
- *   - No repeated DB round-trips per generation within a request.
+ * Will return a 503 if a request can't acquire a semafore, withour waiting
  */
 @Service
 public class TtsGenerationService {
@@ -105,11 +94,6 @@ public class TtsGenerationService {
         }
     }
 
-    /**
-     * Inner method that performs the DB writes + TTS call.
-     * Wrapped in a transaction: if TTS fails, the generation row is updated to 'failed'.
-     */
-    @Transactional
     protected GenerationResult doGenerate(Long userId, TtsGenerateRequest request, String text) throws Exception {
         Long voiceDbId = resolveVoiceDbId(request.voiceId());
         Long generationId = dashboardRepository.createGeneration(
