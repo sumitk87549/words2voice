@@ -16,7 +16,7 @@ interface AnalyticsEvent {
 export class AnalyticsService {
   private readonly ANON_KEY = 'w2v-anon-id';
   private readonly SESSION_KEY = 'w2v-session-id';
-  private readonly FLUSH_INTERVAL = 8000; // 8 seconds
+  private readonly FLUSH_INTERVAL = 60000; // 1 minute
   private readonly MAX_BATCH = 20;
 
   private queue: AnalyticsEvent[] = [];

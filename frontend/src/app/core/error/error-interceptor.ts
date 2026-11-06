@@ -67,7 +67,7 @@ function parseApiError(err: HttpErrorResponse): ApiError {
   }
 
   // Backend returned a plain error string (legacy / unexpected)
-  const code = statusToCode(err.status);
+  const code = codeToStatus(err.status);
   return {
     code,
     status: err.status,
@@ -75,7 +75,7 @@ function parseApiError(err: HttpErrorResponse): ApiError {
   };
 }
 
-function statusToCode(status: number): string {
+function codeToStatus(status: number): string {
   switch (status) {
     case 400: return 'VALIDATION_ERROR';
     case 401: return 'INVALID_CREDENTIALS';
