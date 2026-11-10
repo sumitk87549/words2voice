@@ -1,4 +1,5 @@
-# Words2Voice — Hindi/Hinglish Text-to-Speech Platform
+# Words2Voice — Hindi/Hinglish Text-to-Speech Platform - 
+(https://youtu.be/vdj-TANClWE - DEMO)
 
 A full-stack web application that converts Hindi, English, and Hinglish text into natural-sounding speech using the Supertonic-3 on-device diffusion model. The system is composed of three independently deployable services: an Angular frontend, a Spring Boot REST API, and a FastAPI TTS inference engine.
 
