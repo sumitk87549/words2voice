@@ -67,8 +67,9 @@ public class SecurityConfig {
                     "/api/public/**",
                     "/api/auth/**",
                     "/api/voices/**",          // Voice list endpoint
-                    "/actuator/health/**",        // load-balancer / Render health check
-                    "/actuator/info"           // app info — non-sensitive
+                    "/api/actuator/health/**",
+                    "/api/actuator/health",        // load-balancer / Render health check
+                    "/api/actuator/info"           // app info — non-sensitive
                 ).permitAll()
                 // Actuator management endpoints — require ADMIN role
                 .requestMatchers("/actuator/**").hasRole("ADMIN")
