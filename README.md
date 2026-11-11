@@ -453,20 +453,10 @@ https://words2voice.onrender.com/api
 
 Render reads all secrets from its **Environment** tab. The database is hosted on **Neon** (serverless PostgreSQL); connection pooling is configured via HikariCP in the `prod` profile.
 
-### TTS Service — Oracle Cloud Always Free VM
+### TTS Service — Local Ubuntu
 
-The TTS model runs on a local or cloud VM. The service is exposed publicly via a **Cloudflare Tunnel**:
-
-```bash
-# One-time setup
-cd tts-service
-bash setup-tunnel.sh
-```
-
-The tunnel URL is then set as `TTS_ENGINE_URL` on Render. This avoids opening any inbound firewall ports on the VM.
-
-The `setup-cloudflared-service.sh` script installs `cloudflared` as a systemd service so the tunnel restarts automatically on reboot.
-
+The TTS model runs on my local Laptop (Ubuntu 24). The service is exposed publicly via a **Cloudflare Tunnel**:
+Exposed URL provided to Deployed backend on render (manually tested)
 
 ## Voice Presets
 
